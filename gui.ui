@@ -640,7 +640,7 @@
     </property>
     <item>
      <property name="text">
-      <string>STR 노선도</string>
+      <string>SRT 노선도</string>
      </property>
     </item>
     <item>
@@ -696,7 +696,7 @@
      </font>
     </property>
     <property name="text">
-     <string>STR/KTX 노선도</string>
+     <string>SRT/KTX 노선도</string>
     </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
@@ -724,7 +724,7 @@
         </font>
        </property>
        <property name="text">
-        <string>STR</string>
+        <string>SRT</string>
        </property>
       </widget>
      </item>
