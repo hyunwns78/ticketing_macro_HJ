@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
+import time
 
 class SRT():
     def __init__(self) -> None:
@@ -20,28 +21,53 @@ class SRT():
         
         self.driver.get('https://etk.srail.kr/hpg/hra/01/selectScheduleList.do')
 
+    def plan(self, dep, arr, date, hour):
 
-# str_dep_stn = "동탄"
-# dep_stn = driver.find_element(By.ID,'dptRsStnCdNm')
-# dep_stn.clear() 
-# dep_stn.send_keys(str_dep_stn)
+        time.sleep(1)
 
-# str_arr_stn = "수서"
-# arr_stn = driver.find_element(By.ID , 'arvRsStnCdNm')
-# arr_stn.clear()
-# arr_stn.send_keys(str_arr_stn)
+        self.driver.find_element(By.ID, 'dptRsStnCdNm').clear()
+        self.driver.find_element(By.ID, 'dptRsStnCdNm').send_keys(dep)
+        self.driver.find_element(By.ID, 'arvRsStnCdNm').clear()
+        self.driver.find_element(By.ID, 'arvRsStnCdNm').send_keys(arr)
 
-# #elm_dptDt = driver.find_element(By.ID, "dptDt")
-# #driver.execute_script("arguments[0].setAttribute('style','display: True;')", elm_dptDt)
+        elm_dptDt = self.driver.find_element(By.ID, "dptDt")
+        self.driver.execute_script("arguments[0].setAttribute('style','display: True;')", elm_dptDt)
 
-# Date = "20220801"
-# Time = "100000"
-# Select(driver.find_element(By.ID,"dptDt")).select_by_value(Date)
-# Select(driver.find_element(By.ID,"dptTm")).select_by_value(Time)
-# driver.find_element(By.XPATH,"/html/body/div/div[4]/div/div[2]/form/fieldset/div[2]/input").click()
+        Select(self.driver.find_element(By.ID,"dptDt")).select_by_value(date)
+        Select(self.driver.find_element(By.ID,"dptTm")).select_by_value(hour)
+        self.driver.find_element(By.XPATH,"/html/body/div/div[4]/div/div[2]/form/fieldset/div[2]/input").click()
 
-# train_list = driver.find_elements(By.CSS_SELECTOR, '#result-form > fieldset > div.tbl_wrap.th_thead > table > tbody > tr')
-# print(len(train_list)) # 결과: 10
+        time.sleep(2)
+
+        self.seats = []
+        for count in range(1,11):
+            seat_list = []
+
+            try:
+                seat_train = self.driver.find_element(By.XPATH, 
+                f"/html/body/div/div[4]/div/div[3]/div[1]/form/fieldset/div[6]/table/tbody/tr[{count}]/td[2]").text
+                seat_dep = self.driver.find_element(By.XPATH, 
+                f"/html/body/div/div[4]/div/div[3]/div[1]/form/fieldset/div[6]/table/tbody/tr[{count}]/td[4]").text
+                seat_arr = self.driver.find_element(By.XPATH, 
+                f"/html/body/div/div[4]/div/div[3]/div[1]/form/fieldset/div[6]/table/tbody/tr[{count}]/td[5]").text
+                seat_ava = self.driver.find_element(By.XPATH, 
+                f"/html/body/div/div[4]/div/div[3]/div[1]/form/fieldset/div[6]/table/tbody/tr[{count}]/td[7]").text
+
+            except:
+                seat_train = 'None'
+                seat_dep = 'None'
+                seat_arr = 'None'
+                seat_ava = 'None'
+
+            finally:
+                seat_list.append(seat_train)
+                seat_list.append(seat_dep)
+                seat_list.append(seat_arr)
+                seat_list.append(seat_ava)
+            
+            self.seats.append(seat_list)
+        
+        return self.seats
 
 # for i in range(1, len(train_list)+1):
 #     for j in range(3, 8):
@@ -62,4 +88,3 @@ class SRT():
 
 # while(1):
 #  driver.implicitly_wait(99)
-
