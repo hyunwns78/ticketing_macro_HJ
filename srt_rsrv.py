@@ -10,7 +10,9 @@ class SRT():
         super().__init__()
 
     def srt_login(self):
-        self.driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        self.driver = webdriver.Chrome(options=options)
         self.driver.get('https://etk.srail.co.kr/cmc/01/selectLoginForm.do')
         self.driver.implicitly_wait(15)
         ID = "2281291548"
@@ -79,7 +81,10 @@ class SRT():
                         element = self.driver.find_element(By.XPATH,
                         f"/html/body/div/div[4]/div/div[3]/div[1]/form/fieldset/div[6]/table/tbody/tr[{i}]/td[7]/a")
                         self.driver.execute_script("arguments[0].click();", element)
-
+                        self.driver.quit()
+                        options = webdriver.ChromeOptions()
+                        self.driver = webdriver.Chrome(options=options)
+                        self.driver.get('https://etk.srail.kr/hpg/hra/02/selectReservationList.do?pageId=TK0102010000')
                         return "fin"
                     else:
                         pass
