@@ -53,6 +53,7 @@ class KTX():
         year = date[:4]
         month = date[4:6]
         day = date[6:8]
+        hour = hour[:2]
 
         year_select = Select(self.driver.find_element(By.ID,"s_year"))
         year_select.select_by_value(year)
@@ -76,16 +77,50 @@ class KTX():
         print(len(train_list)) # 결과: 10
 
 
+
+        
+
+        self.seats = []
+        #표의 갯수
+        table_row = 10
         #모든 노선 출력
-        for i in range(1, len(train_list)*2+1,2):
-          for j in range(2, 8):
-              text = self.driver.find_element(By.CSS_SELECTOR, f"#tableResult > tbody > tr:nth-child({i}) > td:nth-child({j})").text.replace("\n"," ")
-              print(text, end="")
-          print()
+        for i in range(1, table_row*2+1,2):
+            seat_list = []
+
+            try:
+                seat_train = self.driver.find_element(By.CSS_SELECTOR, 
+                f"#tableResult > tbody > tr:nth-child({i}) > td:nth-child(2)").text[:3]
+                seat_dep = self.driver.find_element(By.CSS_SELECTOR, 
+                f"#tableResult > tbody > tr:nth-child({i}) > td:nth-child(3)").text
+                seat_arr = self.driver.find_element(By.CSS_SELECTOR, 
+                f"#tableResult > tbody > tr:nth-child({i}) > td:nth-child(4)").text
+                
+                seat_ava = 'None'
+                #ktx표 예매버튼 불러올때 에러나서none으로 고정
+               # seat_ava = self.driver.find_element(By.CSS_SELECTOR, 
+               # f"#tableResult > tbody > tr:nth-child({i}) > td:nth-child(5)").text
+                
+
+            except:
+                seat_train = 'None'
+                seat_dep = 'None'
+                seat_arr = 'None'
+                seat_ava = 'None'
+
+            finally:
+                seat_list.append(seat_train)
+                seat_list.append(seat_dep)
+                seat_list.append(seat_arr)
+                seat_list.append(seat_ava)
+            
+            self.seats.append(seat_list)
+        
+        return self.seats
 
         time.sleep(2)
         
 
-test = KTX()
-test.ktx_login()
-test.plan("서울","부산","20220802","09")
+#test = KTX()
+#test.ktx_login()
+#testlist = test.plan("서울","부산","20220802","09")
+#print(testlist)
