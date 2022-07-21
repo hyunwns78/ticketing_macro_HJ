@@ -11,7 +11,9 @@ class KTX():
 
     def ktx_login(self):
         #로그인 사이트 접속
-        self.driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        self.driver = webdriver.Chrome(options=options)
         self.driver.get('https://www.letskorail.com/korail/com/login.do')
         self.driver.implicitly_wait(15)
 
@@ -27,8 +29,6 @@ class KTX():
         #예매 사이트 접속
         self.driver.get('https://www.letskorail.com/ebizprd/EbizPrdTicketpr21100W_pr21110.do')
         self.driver.implicitly_wait(15)
-
-
 
     def plan(self, dep, arr, date, hour):
 
@@ -76,9 +76,6 @@ class KTX():
         print("검색한 노선 : ", end = "")
         print(len(train_list)) # 결과: 10
 
-
-        
-
         self.seats = []
         #표의 갯수
         table_row = 10
@@ -102,8 +99,6 @@ class KTX():
                     seat_ava = "입석+좌석"#self.driver.find_element(By.XPATH,f"/html/body/div[1]/div[3]/div/div[1]/form[1]/div/div[4]/table[1]/tbody/tr[{(i-1)/2 + 1}]/td[6]/a/img").get_attribute("alt")
                 elif ava_html_cnt == 2:
                     seat_ava = "예약가능"#self.driver.find_element(By.XPATH,f"/html/body/div[1]/div[3]/div/div[1]/form[1]/div/div[4]/table[1]/tbody/tr[{(i-1)/2 + 1}]/td[6]/a[1]/img").get_attribute("alt")
-            
-                
 
             except:
                 seat_train = 'None'
@@ -126,10 +121,13 @@ class KTX():
     def ticket_reservation(self, index_seq):
         is_reserve = None
         Flag = 1
+        
         while Flag:
+            
             print("예약시도")
             is_reserve = self.driver.find_elements(By.CSS_SELECTOR,f'#tableResult > tbody > tr:nth-child({index_seq*2-1}) > td:nth-child(6) > a')
             print(len(is_reserve))
+            
             if len(is_reserve) == 2:
                 try:
                     self.driver.find_element(By.XPATH, f"/html/body/div[1]/div[3]/div/div[1]/form[1]/div/div[4]/table[1]/tbody/tr[{index_seq}]/td[6]/a[1]/img").click()
@@ -138,20 +136,31 @@ class KTX():
                     popup_iframe = self.driver.find_element(By.ID,"embeded-modal-traininfo")
                     self.driver.switch_to.frame(popup_iframe)
                     self.driver.find_element(By.XPATH,"/html/body/div/div[2]/p[3]/a").click()
+                    
                     time.sleep(2)
+                
                 finally:
                     alert = self.driver.switch_to.alert
                     alert.accept()
                     time.sleep(1)
-                    return  
+                    
+                    self.driver.quit()
+                    
+                    options = webdriver.ChromeOptions()
+                    self.driver = webdriver.Chrome(options=options)
+                    
+                    self.driver.get('https://www.letskorail.com/korail/com/login.do')
+                    self.driver.implicitly_wait(15)
+                    ID = "1860530560"
+                    PW = "!autoauto1"
+                    self.driver.find_element(By.ID, 'txtMember').send_keys(ID)
+                    self.driver.find_element(By.ID, 'txtPwd').send_keys(PW)
+
+                    self.driver.find_element(By.XPATH,'/html/body/div[1]/div[3]/div/div[1]/div[2]/div[1]/div[1]/form[1]/fieldset/div[1]/ul/li[3]/a/img').click()
+                    self.driver.get('https://www.letskorail.com/ebizprd/EbizPrdTicketPr13111_i1.do?txtUpDownCd=F&txtIndex=2')
+                    return 'fin'
             else:
                 print("새로고침합니다")
                 self.driver.find_element(By.CSS_SELECTOR,"#center > div.ticket_box > p > a > img").click()
                 time.sleep(2)
-
-
-test = KTX()
-test.ktx_login()
-testlist = test.plan("서울","부산","20220723","00")
-print(testlist)
-test.ticket_reservation(2)
+                continue
