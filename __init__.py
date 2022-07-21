@@ -3,6 +3,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from srt_rsrv import SRT
+from ktx_rsrv_class import KTX
 from PyQt5.QtCore import *
 import sys
 import time
@@ -38,8 +39,8 @@ class Form(QtWidgets.QDialog):
 
         self.map.currentIndexChanged.connect(self.img_change)
 
-        self.srt = SRT()
-        self.srt.srt_login()
+        self.ktx = KTX()
+        self.ktx.ktx_login()
         time.sleep(3)
         
         today_date = str(datetime.datetime.today().date()).replace('-', '/')
@@ -79,7 +80,7 @@ class Form(QtWidgets.QDialog):
         self.selected_date = self.date.date().toString("yyyyMMdd")
         self.selected_hour = self.hour.currentText() + '0000'
 
-        result = self.srt.plan(self.selected_dep, self.selected_arr, self.selected_date, self.selected_hour)
+        result = self.ktx.plan(self.selected_dep, self.selected_arr, self.selected_date, self.selected_hour)
 
         for row in range(10):
             for col in range(4):
@@ -94,7 +95,7 @@ class Form(QtWidgets.QDialog):
             else:
                 pass
 
-        self.srt.try_reservation(self.select_list)
+        self.ktx.try_reservation(self.select_list)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

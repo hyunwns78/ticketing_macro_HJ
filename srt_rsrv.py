@@ -10,7 +10,9 @@ class SRT():
         super().__init__()
 
     def srt_login(self):
-        self.driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        self.driver = webdriver.Chrome(options=options)
         self.driver.get('https://etk.srail.co.kr/cmc/01/selectLoginForm.do')
         self.driver.implicitly_wait(15)
         ID = "2281291548"
@@ -79,7 +81,10 @@ class SRT():
                         element = self.driver.find_element(By.XPATH,
                         f"/html/body/div/div[4]/div/div[3]/div[1]/form/fieldset/div[6]/table/tbody/tr[{i}]/td[7]/a")
                         self.driver.execute_script("arguments[0].click();", element)
-
+                        self.driver.quit()
+                        options = webdriver.ChromeOptions()
+                        self.driver = webdriver.Chrome(options=options)
+                        self.driver.get('https://etk.srail.kr/')
                         return "fin"
                     else:
                         pass
@@ -93,16 +98,3 @@ class SRT():
             except:
                 time.sleep(8)
                 continue
-
-# for i in range(1, 3):
-#     standard_seat = driver.find_element(By.CSS_SELECTOR, f"#result-form > fieldset > div.tbl_wrap.th_thead > table > tbody > tr:nth-child({i}) > td:nth-child(7)").text
-    
-#     if "예약하기" in standard_seat:
-#         print("예약 가능")        
-#         driver.find_element(By.XPATH, f"/html/body/div[1]/div[4]/div/div[3]/div[1]/form/fieldset/div[6]/table/tbody/tr[{i}]/td[7]/a/span").click()
-        
-#         # CSS Selector 사용시 예약하기 대신 좌석선택이 눌러지는 문제가 있어 XPATH로 변경
-#         # driver.find_element(By.CSS_SELECTOR, f"#result-form > fieldset > div.tbl_wrap.th_thead > table > tbody > tr:nth-child({i}) > td:nth-child(7) > a").click()
-
-# while(1):
-#  driver.implicitly_wait(99)
