@@ -63,7 +63,7 @@ class Form(QtWidgets.QDialog):
         elif index == 5:
             pixmap = QPixmap('map_img/강릉선.png')
         elif index == 6:
-            pixmap = QPixmap('map_img/중부선.png')
+            pixmap = QPixmap('map_img/중앙선.png')
         elif index == 7:
             pixmap = QPixmap('map_img/중부내륙.png')
 
