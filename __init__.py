@@ -92,10 +92,11 @@ class Form(QtWidgets.QDialog):
                 self.select_list.append(i)
             else:
                 pass
-
-        self.ktx.try_reservation(self.select_list)
+            
+        self.ktx.ticket_reservation(self.select_list[0] + 1)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     form = Form()
     sys.exit(app.exec())
+    
