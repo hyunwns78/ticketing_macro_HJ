@@ -68,13 +68,31 @@ class SRT():
             self.seats.append(seat_list)
         
         return self.seats
+    
+    def try_reservation(self, check):
+        while True:
+            try:
+                for i in check:
+                    i += 1
+                    if self.driver.find_element(By.XPATH, 
+                    f"/html/body/div/div[4]/div/div[3]/div[1]/form/fieldset/div[6]/table/tbody/tr[{i}]/td[7]/a").text == "예약하기":
+                        element = self.driver.find_element(By.XPATH,
+                        f"/html/body/div/div[4]/div/div[3]/div[1]/form/fieldset/div[6]/table/tbody/tr[{i}]/td[7]/a")
+                        self.driver.execute_script("arguments[0].click();", element)
 
-# for i in range(1, len(train_list)+1):
-#     for j in range(3, 8):
-#         text = driver.find_element(By.CSS_SELECTOR, f"#result-form > fieldset > div.tbl_wrap.th_thead > table > tbody > tr:nth-child({i}) > td:nth-child({j})").text.replace("\n"," ")
-#         print(text, end="")
-#     print()
+                        return "fin"
+                    else:
+                        pass
 
+                self.driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.CONTROL + Keys.HOME)
+                element = self.driver.find_element(By.XPATH,
+                '/html/body/div[1]/div[4]/div/div[2]/form/fieldset/div[2]/input')
+                self.driver.execute_script("arguments[0].click();", element)
+                time.sleep(1)
+
+            except:
+                time.sleep(8)
+                continue
 
 # for i in range(1, 3):
 #     standard_seat = driver.find_element(By.CSS_SELECTOR, f"#result-form > fieldset > div.tbl_wrap.th_thead > table > tbody > tr:nth-child({i}) > td:nth-child(7)").text
