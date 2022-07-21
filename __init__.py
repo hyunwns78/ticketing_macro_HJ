@@ -43,7 +43,7 @@ class Form(QtWidgets.QDialog):
         today_date = str(datetime.datetime.today().date()).replace('-', '/')
         self.date.setDate(QDate.fromString(today_date, "yyyy/MM/dd"))
         self.ui.searchSeat.clicked.connect(self.find_seat)
-        #self.ui.tryReservation.clicked.connect(self.try_seat)
+        self.ui.tryReservation.clicked.connect(self.select_seat)
 
         self.ui.show()
 
@@ -82,6 +82,17 @@ class Form(QtWidgets.QDialog):
         for row in range(10):
             for col in range(4):
                 self.table.setItem(row, col, QtWidgets.QTableWidgetItem(result[row][col]))
+
+    def select_seat(self):
+        self.select_list = []
+
+        for i, check_box in enumerate(self.check_list):
+            if check_box.isChecked() == True:
+                self.select_list.append(i)
+            else:
+                pass
+
+        self.srt.try_reservation(self.select_list)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
