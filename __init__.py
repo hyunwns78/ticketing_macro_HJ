@@ -35,7 +35,7 @@ class Form(QtWidgets.QDialog):
         today_date.replace('-', '/')
         self.date.setDate(QDate.fromString(today_date, "yyyy/MM/dd"))
 
-        #self.ui.show()
+        self.ui.show()
 
 
 if __name__ == '__main__':
