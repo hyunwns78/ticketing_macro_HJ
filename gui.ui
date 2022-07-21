@@ -22,28 +22,38 @@
    <widget class="QComboBox" name="depCity">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>120</x>
       <y>30</y>
       <width>111</width>
       <height>21</height>
      </rect>
     </property>
     <property name="currentText">
-     <string>수서</string>
+     <string>서울</string>
     </property>
     <item>
      <property name="text">
-      <string>수서</string>
+      <string>서울</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>동탄</string>
+      <string>용산</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>지제</string>
+      <string>영등포</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>광명</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>수원</string>
      </property>
     </item>
     <item>
@@ -58,7 +68,72 @@
     </item>
     <item>
      <property name="text">
-      <string>공주</string>
+      <string>대전</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>서대전</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>김천구미</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>동대구</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>포항</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>밀양</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>구포</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>부산</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>신경주</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>울산(통도사)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>마산</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>창원중앙</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>경산</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>논산</string>
      </property>
     </item>
     <item>
@@ -78,144 +153,44 @@
     </item>
     <item>
      <property name="text">
-      <string>나주</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
       <string>목포</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>대전</string>
+      <string>전주</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>김천구미</string>
+      <string>순천</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>동대구</string>
+      <string>청량리</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>신경주</string>
+      <string>강릉</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>울산(통도사)</string>
+      <string>행신</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>부산</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QComboBox" name="arrCity">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>30</y>
-      <width>111</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>수서</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>동탄</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>지제</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>천안아산</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>오송</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>공주</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>익산</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>정읍</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>광주송정</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>나주</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>목포</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>대전</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>김천구미</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>동대구</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>신경주</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>울산(통도사)</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>부산</string>
+      <string>정동진</string>
      </property>
     </item>
    </widget>
    <widget class="QComboBox" name="depHour">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>270</x>
       <y>60</y>
       <width>111</width>
       <height>21</height>
@@ -285,9 +260,9 @@
    <widget class="QPushButton" name="searchSeat">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>414</x>
       <y>30</y>
-      <width>75</width>
+      <width>101</width>
       <height>51</height>
      </rect>
     </property>
@@ -305,7 +280,7 @@
    <widget class="QDateEdit" name="depDate">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>120</x>
       <y>60</y>
       <width>110</width>
       <height>22</height>
@@ -453,7 +428,7 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>30</x>
       <y>110</y>
       <width>61</width>
       <height>531</height>
@@ -601,7 +576,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>160</x>
       <y>5</y>
       <width>51</width>
       <height>21</height>
@@ -621,7 +596,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>310</x>
       <y>5</y>
       <width>51</width>
       <height>21</height>
@@ -711,49 +686,173 @@
      <string>SRT/KTX 노선도</string>
     </property>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QComboBox" name="arrCity">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>270</x>
       <y>30</y>
-      <width>78</width>
-      <height>51</height>
+      <width>111</width>
+      <height>21</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
+    <property name="currentText">
+     <string>서울</string>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QCheckBox" name="check_str">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>SRT</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="check_ktx">
-       <property name="font">
-        <font>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>KTX</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <item>
+     <property name="text">
+      <string>서울</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>용산</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>영등포</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>광명</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>수원</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>천안아산</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>오송</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>대전</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>서대전</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>김천구미</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>동대구</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>포항</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>밀양</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>구포</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>부산</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>신경주</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>울산(통도사)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>마산</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>창원중앙</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>경산</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>논산</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>익산</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>정읍</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>광주송정</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>목포</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>전주</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>순천</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>청량리</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>강릉</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>행신</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>정동진</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
