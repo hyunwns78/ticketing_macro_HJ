@@ -1,4 +1,6 @@
 from PyQt5 import QtWidgets
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from srt_rsrv import SRT
 from PyQt5.QtCore import *
@@ -27,6 +29,12 @@ class Form(QtWidgets.QDialog):
                             self.ui.checkBox_09,
                             self.ui.checkBox_10
         ]
+        self.map_img = self.ui.label                # SRT/KTX 노선도 사진
+        pixmap = QPixmap('map_img/srt.png')
+        pixmap = pixmap.scaled(460, 520)
+        self.map_img.setPixmap(pixmap)
+
+        self.map.currentIndexChanged.connect(self.img_change)
 
         self.srt = SRT()
         self.srt.srt_login()
@@ -38,6 +46,29 @@ class Form(QtWidgets.QDialog):
         #self.ui.tryReservation.clicked.connect(self.try_seat)
 
         self.ui.show()
+
+    def img_change(self):
+        index = self.map.currentIndex()
+
+        if index == 0:
+            pixmap = QPixmap('map_img/srt.png')
+        elif index == 1:
+            pixmap = QPixmap('map_img/경부선.png')
+        elif index == 2:
+            pixmap = QPixmap('map_img/호남선.png')
+        elif index == 3:
+            pixmap = QPixmap('map_img/경전선.png')
+        elif index == 4:
+            pixmap = QPixmap('map_img/전라선.png')
+        elif index == 5:
+            pixmap = QPixmap('map_img/강릉선.png')
+        elif index == 6:
+            pixmap = QPixmap('map_img/중부선.png')
+        elif index == 7:
+            pixmap = QPixmap('map_img/중부내륙.png')
+
+        pixmap = pixmap.scaled(460, 520)
+        self.map_img.setPixmap(pixmap)
 
     def find_seat(self):
         self.selected_dep = self.dep.currentText()
