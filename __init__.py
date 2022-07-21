@@ -98,7 +98,7 @@ class Form(QtWidgets.QDialog):
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
-    form = WindowClass()
-    #form = Form()
-    form.show()
+   # form = WindowClass()
+    form = Form()
+   # form.show()
     sys.exit(app.exec())
