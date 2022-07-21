@@ -5,10 +5,12 @@ from PyQt5.QtCore import *
 import sys
 import time
 import datetime
+from login import *
 
 class Form(QtWidgets.QDialog):
     def __init__(self, parent=None):
         QtWidgets.QDialog.__init__(self, parent)
+        
         self.ui = uic.loadUi("gui.ui")
         self.dep = self.ui.depCity                  # 출발지
         self.arr = self.ui.arrCity                  # 도착지
@@ -54,5 +56,7 @@ class Form(QtWidgets.QDialog):
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
-    form = Form()
+    form = WindowClass()
+    #form = Form()
+    form.show()
     sys.exit(app.exec())
